@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Incident</title>
+    <style>
+        * { box-sizing: border-box; }
+        html, body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background: #050505;
+            color: #d8d8d8;
+            font-family: "Ubuntu Mono", "DejaVu Sans Mono", "Liberation Mono", "Consolas", monospace;
+        }
+        body { padding: 35px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header {
+            border-bottom: 1px solid #444;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .title {
+            color: #ff3b3b;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        .subtitle {
+            margin-top: 10px;
+            color: #888;
+            font-size: 14px;
+        }
+        .warning {
+            border: 1px solid #8b1a1a;
+            background: #120707;
+            box-shadow: 0 0 18px rgba(139, 26, 26, 0.12);
+            padding: 22px;
+            margin-bottom: 30px;
+        }
+        .warning-title {
+            color: #ff4141;
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .warning p {
+            margin: 7px 0;
+            line-height: 1.6;
+        }
+        .log {
+            color: #9a9a9a;
+            font-size: 14px;
+            line-height: 1.8;
+            white-space: pre-wrap;
+        }
+        .log .critical { color: #ff4141; }
+        .log .success { color: #c7c7c7; }
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 15px;
+            background: #aaa;
+            animation: blink 0.8s infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        .footer {
+            margin-top: 45px;
+            border-top: 1px solid #222;
+            padding-top: 15px;
+            color: #555;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="title">SECURITY INCIDENT</div>
+        <div class="subtitle">Unauthorized access detection system</div>
+    </div>
+
+    <div class="warning">
+        <div class="warning-title">WARNING: UNAUTHORIZED ACCESS DETECTED</div>
+        <p>보안 시스템에서 비정상적인 접근이 감지되었습니다.</p>
+        <p>현재 접속 환경 및 세션 상태를 확인하고 있습니다.</p>
+        <p>이 페이지를 즉시 종료하지 마십시오.</p>
+    </div>
+
+    <div class="log" id="log"></div>
+
+    <div class="footer">
+        SECURITY MONITORING SYSTEM / INCIDENT RESPONSE MODULE
+    </div>
+</div>
+
+<script>
+    // 교육용 시뮬레이션
+    // 어떠한 개인정보도 수집하거나 외부로 전송하지 않습니다.
+
+    alert(
+        "SECURITY WARNING\n\n" +
+        "비정상적인 접근이 감지되었습니다.\n" +
+        "현재 세션에 대한 보안 검사가 진행 중입니다."
+    );
+
+    alert(
+        "SECURITY ALERT\n\n" +
+        "현재 접속 세션의 무결성을 확인할 수 없습니다.\n" +
+        "보안 시스템이 추가 검사를 수행합니다."
+    );
+
+    alert(
+        "WARNING: SUSPICIOUS ACTIVITY\n\n" +
+        "비정상적인 접근 패턴이 감지되었습니다.\n" +
+        "세션 보안 상태를 확인하고 있습니다."
+    );
+
+    alert(
+        "CRITICAL SECURITY NOTICE\n\n" +
+        "의심스러운 접근이 확인되었습니다.\n" +
+        "보안 사고 대응 절차가 시작되었습니다."
+    );
+
+    alert(
+        "SECURITY INCIDENT DETECTED\n\n" +
+        "현재 세션이 보안 검토 대상으로 지정되었습니다.\n" +
+        "이 창을 닫으면 시스템 로그 확인이 계속됩니다."
+    );
+
+    const lines = [
+        "[SYSTEM] Initializing security monitoring...",
+        "[SYSTEM] Checking connection integrity...",
+        "[SYSTEM] Analyzing current session...",
+        "[SYSTEM] Detecting abnormal activity...",
+        "[WARNING] Unauthorized access pattern detected.",
+        "[WARNING] Session integrity cannot be verified.",
+        "[SYSTEM] Reviewing access permissions...",
+        "[SYSTEM] Checking local environment...",
+        "[CRITICAL] Suspicious access detected.",
+        "[SYSTEM] Incident status: ACTIVE",
+        "",
+        "SECURITY INCIDENT RESPONSE REQUIRED"
+    ];
+
+    const log = document.getElementById("log");
+    let index = 0;
+
+    function addLine() {
+        if (index >= lines.length) {
+            log.innerHTML += "\n<span class='critical'>[CRITICAL] Connection under security review.</span>";
+            log.innerHTML += "\n<span class='success'>[EDUCATION] This is a security awareness simulation.</span>";
+            log.innerHTML += "\n<span class='success'>No personal information has been collected or transmitted.</span>";
+            log.innerHTML += "\n\n<span class='cursor'></span>";
+            return;
+        }
+
+        const line = lines[index];
+
+        if (line.includes("[CRITICAL]")) {
+            log.innerHTML += `<span class="critical">${line}</span>\n`;
+        } else {
+            log.innerHTML += line + "\n";
+        }
+
+        index++;
+        setTimeout(addLine, 500);
+    }
+
+    setTimeout(addLine, 600);
+</script>
+</body>
+</html>
